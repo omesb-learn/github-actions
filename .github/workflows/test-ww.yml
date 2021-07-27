@@ -14,6 +14,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: "OC-Git/Wirtschaftswunder"
+          ref: "github-actions"
           ssh-key: ${{secrets.SSH}}
           path: "Wirtschaftswunder"
           
@@ -23,10 +24,14 @@ jobs:
           ssh-key: ${{secrets.SSH}}
           path: "Konfigurator2"
           
-      - run: npm install -g yarn 
+      - name: install yarn
+        run: npm install -g yarn 
       
-      - run: sudo apt install git
-      - run: sudo apt install docker-compose
+      - name: install git
+        run: sudo apt install git
+      
+      - name: install docker
+        run: sudo apt install docker-compose
       
       - name: yarn install docker/
         working-directory: ./Konfigurator2/docker/
