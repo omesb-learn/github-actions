@@ -10,6 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        repository: "omesb/dots"
+        repository: "OC-Git/Konfigurator2"
         ssh-key: ${{secrets.SSH}}
-    - run: ls
+    - run: ls -la
