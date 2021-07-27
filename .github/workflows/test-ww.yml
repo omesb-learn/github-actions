@@ -23,6 +23,7 @@ jobs:
       - run: sudo apt install docker-compose
       - name: try docker
         working-directory: ./Konfigurator2/docker/
+        continue-on-error: true
         run: |
           yarn install --ignore-optional --ignore-scripts
           node docky
