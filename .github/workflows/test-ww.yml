@@ -25,6 +25,7 @@ jobs:
           
       - run: npm install -g yarn 
       
+      - run: sudo apt install git
       - run: sudo apt install docker-compose
       
       - name: yarn install docker/
