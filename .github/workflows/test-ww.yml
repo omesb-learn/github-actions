@@ -1,0 +1,36 @@
+name: Test WW Docker
+
+on:
+  workflow_dispatch:
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: "OC-Git/Wirtschaftswunder"
+          ssh-key: ${{secrets.SSH}}
+          path: "Wirtschaftswunder"
+      - uses: actions/checkout@v2
+        with:
+          repository: "OC-Git/Konfigurator2"
+          ssh-key: ${{secrets.SSH}}
+          path: "Konfigurator2"
+      - run: npm install -g yarn 
+      - run: sudo apt install docker-compose
+      - name: try docker
+        working-directory: ./Konfigurator2/docker/
+        run: |
+          yarn install --ignore-optional --ignore-scripts
+          node docky
+          yarn up
+        
+#           sleep 60
+#           yarn stop
+#           yarn start
+#           sleep 60
+#           yarn soft_clean
+
