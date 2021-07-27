@@ -1,0 +1,15 @@
+name: clone WW
+
+on:
+  workflow_dispatch:
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: "OC-Git/Konfigurator2"
+        ssh: ${{secrets.SSH}}
+    - run: ls
