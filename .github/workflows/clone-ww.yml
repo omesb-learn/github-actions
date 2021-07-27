@@ -11,5 +11,5 @@ jobs:
     - uses: actions/checkout@v2
       with:
         repository: "omesb/dots"
-        ssh-key: ${{secrets.SSH_PUB}}
+        ssh-key: ${{secrets.SSH}}
     - run: ls
