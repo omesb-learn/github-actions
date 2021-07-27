@@ -15,4 +15,7 @@ jobs:
 #       - name: Run a one-line script
 #         run: echo Hello, world!
 
-       - run: echo "${secrets.TEST}"
+     - name: echo_me
+       env: 
+        test_secret: ${{ secrets.TEST }}
+       run: echo "$test_secret"
