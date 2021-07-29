@@ -1,0 +1,54 @@
+name: Konfigurator2 Docker
+
+on: [push, workflow_dispatch]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:    
+      - uses: actions/setup-node@v2      
+      - uses: actions/checkout@v2
+        with:
+          repository: "OC-Git/Wirtschaftswunder"
+          ref: "github-actions"
+          token: ${{ secrets.READ_PAT }}
+          path: "Wirtschaftswunder"
+          
+      - uses: actions/checkout@v2
+        with:
+          repository: "OC-Git/Konfigurator2"
+          token: ${{ secrets.READ_PAT }}
+          path: "Konfigurator2"
+          
+      - name: install yarn
+        run: npm install -g yarn 
+      
+      - name: install docker
+        run: sudo apt install docker-compose
+      
+      - name: docker/ yarn install
+        working-directory: ./Konfigurator2/docker/
+        continue-on-error: true
+        run: yarn install --ignore-optional --ignore-scripts
+        
+      - name: docker/ node docky
+        working-directory: ./Konfigurator2/docker/
+        continue-on-error: true
+        run: node docky
+        
+      - name: docker/ yarn up
+        working-directory: ./Konfigurator2/docker/
+        continue-on-error: true
+        run: yarn up
+        
+      - name: sleep and stop
+        working-directory: ./Konfigurator2/docker/
+        continue-on-error: true
+        run: |
+          sleep 60
+          yarn stop
+        
+      - name: docker/ yarn start
+        working-directory: ./Konfigurator2/docker/
+        run: yarn start
