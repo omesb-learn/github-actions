@@ -6,12 +6,11 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
         with:
           repository: "omesb/dots"
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT2 }}
           path: "dots"
           
       - run: ls
