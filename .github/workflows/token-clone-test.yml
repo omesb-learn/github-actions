@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: "omesb/dots"
-          token: ${{ secrets.PAT2 }}
+          token: ${{ secrets.READ_PAT }}
           path: "dots"
           
       - run: ls
