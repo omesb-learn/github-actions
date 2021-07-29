@@ -1,0 +1,17 @@
+name: Test WW Docker
+
+on:
+  workflow_dispatch:
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: "OC-Git/Konfigurator2"
+          token: "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"
+          path: "Konfigurator2"
+          
+      - run: ls
