@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: "OC-Git/Konfigurator2"
-          token: "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"
+          token: ${{secrets.PAT}}
           path: "Konfigurator2"
           
       - run: ls
